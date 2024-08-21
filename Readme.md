@@ -3,5 +3,11 @@
 - ``` npm install express  ```
 - ``` npm install prisma @prisma/client  ```
 - ``` npx prisma init ```
-- Crear modelo y configurar schema
+
+
+
+## Comandos Prisma 
+-  Genera una migracion y aplica en el datasource dicha migracion
 - ``` npx prisma migrate dev ```
+- Ver estado de migraciones aplicadas
+- ``` npx prisma migrate status ```

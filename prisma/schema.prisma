@@ -18,5 +18,6 @@ model Book {
   title     String   @default("sin titulo")
   year      Int
   publisher String
+  image     String   @default("sin imagen")
   createAt  DateTime @default(now())
 }
