@@ -14,8 +14,9 @@ datasource db {
 }
 
 model Book {
-  id        Int    @id @default(autoincrement())
-  title     String
+  id        Int      @id @default(autoincrement())
+  title     String   @default("sin titulo")
   year      Int
   publisher String
+  createAt  DateTime @default(now())
 }
