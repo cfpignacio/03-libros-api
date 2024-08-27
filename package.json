@@ -5,7 +5,8 @@
 	"main": "server.js",
 	"type": "module",
 	"scripts": {
-		"dev": "node --watch server.js"
+		"dev": "node --watch server.js",
+		"migrate:status": "prisma migrate status"
 	},
 	"author": "ign",
 	"license": "ISC",
