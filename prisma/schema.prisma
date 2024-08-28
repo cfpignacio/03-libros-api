@@ -20,4 +20,15 @@ model Book {
   publisher String
   image     String   @default("sin imagen")
   createAt  DateTime @default(now())
+  author    Author   @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+model Author {
+  id          Int      @id @default(autoincrement())
+  firstname   String
+  lastname    String
+  nationality String
+  birthdate   DateTime
+  Book        Book[]
 }

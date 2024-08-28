@@ -12,9 +12,11 @@ export const getBooks = async (req, res) => {
 
 export const getBook = async (req, res) => {
 	const id = parseInt(req.params.id);
+
 	try {
 		const book = await prisma.book.findUniqueOrThrow({
-			where: { id }
+			where: { id },
+			include: { author: { select: { firstname: true, lastname: true } } }
 		});
 
 		res.json(book);
@@ -29,7 +31,7 @@ export const getBook = async (req, res) => {
 
 export const createBook = async (req, res) => {
 	try {
-		const { title, year, publisher } = req.body;
+		const { title, year, publisher, authorId, fecha } = req.body;
 
 		// const title = req.body.title;
 		// const year = req.body.year;
@@ -37,9 +39,10 @@ export const createBook = async (req, res) => {
 
 		const book = await prisma.book.create({
 			data: {
-				title,
+				title: nuevotitulo,
 				year,
-				publisher
+				publisher,
+				authorId
 			}
 		});
 
