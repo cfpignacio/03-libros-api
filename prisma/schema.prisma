@@ -22,13 +22,16 @@ model Book {
   createAt  DateTime @default(now())
   author    Author   @relation(fields: [authorId], references: [id])
   authorId  Int
+  updatedAt DateTime @updatedAt
 }
 
 model Author {
   id          Int      @id @default(autoincrement())
-  firstname   String
-  lastname    String
+  firstName   String
+  lastName    String
   nationality String
   birthdate   DateTime
+  createAt    DateTime @default(now())
   Book        Book[]
+  updatedAt   DateTime @updatedAt
 }
