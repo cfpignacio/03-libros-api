@@ -12,7 +12,8 @@ export const getAuthor = async (req, res) => {
 	try {
 		const id = parseInt(req.params.id);
 		const author = await prisma.author.findUniqueOrThrow({ where: { id } });
-		res.json(author);
+		const res_author = { ...author, fecha: Date.now() };
+		res.json(res_author);
 	} catch (error) {
 		res.status(500).json({ error: 'Error al obtener el autor' });
 	}
@@ -35,10 +36,10 @@ export const createAuthor = async (req, res) => {
 		res.status(500).json({ error: 'Error al crear un autor' });
 	}
 };
-
 export const updateAuthor = async (req, res) => {
 	const id = parseInt(req.params.id);
 	const { firstName, lastName, nationality, birthdate } = req.body;
+
 	try {
 		const authorUpdate = await prisma.author.update({
 			where: { id },

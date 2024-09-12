@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "node --watch server.js",
 		"migrate:status": "prisma migrate status",
-		"p": "prisma"
+		"migrate:dev": "prisma migrate dev"
 	},
 	"author": "ign",
 	"license": "ISC",
