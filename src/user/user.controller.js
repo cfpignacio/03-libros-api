@@ -94,8 +94,9 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
 	try {
 		const id = parseInt(req.params.id);
+		const userCheck = existUser(id);
 
-		if (!existUser(id)) {
+		if (!userCheck) {
 			return res.status(404).json({ msg: 'Usuario no encontrado' });
 		}
 		const user = await prisma.users.update({
@@ -113,7 +114,7 @@ export const deleteUser = async (req, res) => {
 export const existUser = async (id) => {
 	try {
 		const exitsUser = await prisma.users.findUnique({
-			where: { id }
+			where: { id, deletedAt: null }
 		});
 
 		if (!exitsUser) {
