@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "api-books",
     "collectionId": "4d432183-a7a8-425f-87c7-9f8cd717c142",
-    "dateExported": "2024-09-12T00:15:26.195Z",
+    "dateExported": "2024-09-16T23:20:38.481Z",
     "version": "1.2",
     "folders": [
         {
@@ -25,6 +25,13 @@
             "containerId": "",
             "created": "2024-09-11T22:43:59.346Z",
             "sortNum": 30000
+        },
+        {
+            "_id": "9ae31d4a-2b7b-49f6-ac33-3faf74acd9fe",
+            "name": "auth",
+            "containerId": "",
+            "created": "2024-09-16T23:10:09.489Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
@@ -190,11 +197,11 @@
             "colId": "4d432183-a7a8-425f-87c7-9f8cd717c142",
             "containerId": "81a60c40-b873-4e89-ada9-9b2592b77e92",
             "name": "Delete user",
-            "url": "http://localhost:3000/api/user/1",
+            "url": "http://localhost:3000/api/user/2",
             "method": "DELETE",
             "sortNum": 75000,
             "created": "2024-09-11T23:07:39.637Z",
-            "modified": "2024-09-11T23:07:48.119Z",
+            "modified": "2024-09-16T21:50:52.430Z",
             "headers": []
         },
         {
@@ -218,14 +225,31 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2024-09-11T22:44:14.744Z",
-            "modified": "2024-09-11T23:25:09.575Z",
+            "modified": "2024-09-16T22:17:14.763Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"firstName\": \"Pedro\",\n  \"lastName\": \"Lopez\",\n  \"email\": \"Lopez@example.com\",\n  \"password\": \"2313213\"\n}\n",
+                "raw": "{\n  \"firstName\": \"Juan\",\n  \"lastName\": \"Kily\",\n  \"email\": \"Juan@example.com\",\n  \"password\": \"Mipassword2024\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "8c686332-e7a0-4e4d-9408-8a527a8ca337",
+            "colId": "4d432183-a7a8-425f-87c7-9f8cd717c142",
+            "containerId": "9ae31d4a-2b7b-49f6-ac33-3faf74acd9fe",
+            "name": "login",
+            "url": "http://localhost:3000/api/login",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-09-16T23:10:16.884Z",
+            "modified": "2024-09-16T23:11:47.678Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"juan@example.com\",\n  \"password\":\"Mipassword2024\"\n}",
                 "form": []
             }
         }
     ],
-    "ref": "j5wLY_6M9e0wGm14lLfp4VfUZnj5DP5BCf1DSktXAfpcIqYlU7J0rK3caW6nmrS2iefD8suTctCAQLYQgINguw"
+    "ref": "j5wLY_6M9e0wGm14lLfp4T6W965_hPQI1y7n93qPlk8obzS9-wQpdCMkWV6IqOil_iv7Lba7j-Q0EWVSwybYsw"
 }
