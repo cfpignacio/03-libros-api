@@ -1,20 +1,22 @@
 import prisma from '../../prisma/prismaClient.js';
+import bcrypt from 'bcryptjs';
 
 export const createUser = async (req, res) => {
 	try {
 		const { firstName, lastName, email, password } = req.body;
+		const passwordBcrypt = await bcrypt.hash(password, 10);
+
 		const user = await prisma.users.create({
 			data: {
 				firstName,
 				lastName,
 				email: email.toLowerCase(),
-				password
+				password: passwordBcrypt
 			}
 		});
 		res.status(201).json(user);
 	} catch (error) {
-		console.log(error);
-		res.status(500).json('Error al crear el usuario');
+		res.status(500).json({ msg: 'Error al crear el usuario' });
 	}
 };
 
