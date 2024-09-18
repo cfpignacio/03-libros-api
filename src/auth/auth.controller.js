@@ -17,7 +17,7 @@ export const loginLocalUser = async (req, res) => {
 		if (!passwordCheck) {
 			throw new Error();
 		}
-		res.status(500).json({ msg: 'Login true' });
+		res.status(200).json({ msg: 'Login true' });
 	} catch (error) {
 		res.status(500).json({ msg: 'Login false' });
 	}

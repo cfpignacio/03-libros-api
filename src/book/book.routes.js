@@ -1,7 +1,7 @@
 import express from 'express';
 import {
-	createBook,
-	getBooks,
+	createBookController,
+	getBooksController,
 	getBook,
 	updateBook,
 	deleteBook
@@ -9,8 +9,8 @@ import {
 
 const router = express.Router();
 
-router.get('/book', getBooks);
-router.post('/book', createBook);
+router.get('/book', getBooksController);
+router.post('/book', createBookController);
 router.get('/book/:id', getBook);
 router.patch('/book/:id', updateBook);
 router.delete('/book/:id', deleteBook);

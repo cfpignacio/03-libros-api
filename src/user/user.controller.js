@@ -1,5 +1,6 @@
 import prisma from '../../prisma/prismaClient.js';
 import bcrypt from 'bcryptjs';
+import { createBook } from '../book/book.service.js';
 
 export const createUser = async (req, res) => {
 	try {

@@ -1,8 +1,9 @@
 import prisma from './../../prisma/prismaClient.js';
+import { createBook, getBooks } from './book.service.js';
 
-export const getBooks = async (req, res) => {
+export const getBooksController = async (req, res) => {
 	try {
-		const books = await prisma.book.findMany();
+		const books = await getBooks();
 
 		res.json(books);
 	} catch (error) {
@@ -29,23 +30,9 @@ export const getBook = async (req, res) => {
 	}
 };
 
-export const createBook = async (req, res) => {
+export const createBookController = async (req, res) => {
 	try {
-		const { title, year, publisher, authorId, fecha } = req.body;
-
-		// const title = req.body.title;
-		// const year = req.body.year;
-		// const publisher = req.body.publisher;
-
-		const book = await prisma.book.create({
-			data: {
-				title: nuevotitulo,
-				year,
-				publisher,
-				authorId
-			}
-		});
-
+		const book = await createBook(req.body);
 		res.status(201).json(book);
 	} catch (error) {
 		console.log(error);
