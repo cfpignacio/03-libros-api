@@ -10,18 +10,6 @@ const port = 3000;
 
 app.use(express.json());
 
-// middleware METODO
-
-// const printMetodo = (req, res, next) => {
-// 	console.log(`MIDDLEWARE -> ${req.method}`);
-
-// 	if (req.method == 'GET') {
-// 		res.json('No soportamos GET');
-// 	}
-
-// 	next();
-// };
-
 app.get('/', (req, res) => {
 	res.status(200).json('OK');
 });
