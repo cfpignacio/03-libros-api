@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import booksRoutes from './src/book/book.routes.js';
 import authorsRoutes from './src/author/author.routes.js';
@@ -6,7 +7,7 @@ import authRoutes from './src/auth/auth.routes.js';
 import { createBook, getBooks } from './src/book/book.service.js';
 
 const app = express();
-const port = 3000;
+const port = parseInt(process.env.APIBOOK_PORT) || 3000;
 
 app.use(express.json());
 

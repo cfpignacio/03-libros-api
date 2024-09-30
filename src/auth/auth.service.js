@@ -17,8 +17,14 @@ export const authLocal = async (email, password) => {
 	}
 	// generamos JWT
 	// npm install jsonwebtoken
-	const accessToken = jwt.sign({ email: user.email }, 'mipassword01', {
-		expiresIn: '1h'
-	});
+	const accessToken = jwt.sign(
+		{ email: user.email },
+		process.env.APIBOOK_JWT_PASSWORD || 'defaultpass',
+		{
+			expiresIn: process.env.APIBOOK_JWT_TIME || '1h'
+		}
+	);
+
+	console.log(process.env.APIBOOK_JWT_PASSWORD);
 	return accessToken;
 };

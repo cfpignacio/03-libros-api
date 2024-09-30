@@ -11,3 +11,8 @@
 - ``` npx prisma migrate dev ```
 - Ver estado de migraciones aplicadas
 - ``` npx prisma migrate status ```
+
+## Variables de Entorno
+- APIBOOK_PORT =
+- APIBOOK_JWT_TIME = 
+- APIBOOK_JWT_PASSWORD = 
