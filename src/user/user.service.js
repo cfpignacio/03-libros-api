@@ -1,7 +1,5 @@
 import prisma from '../../prisma/prismaClient.js';
 import bcrypt from 'bcryptjs';
-import { existUser } from './user.controller.js';
-import 'dotenv/config';
 
 export const getAllUsers = async () => {
 	const users = await prisma.users.findMany({
@@ -70,4 +68,19 @@ export const deleteUser = async (id) => {
 		data: { deletedAt: new Date() }
 	});
 	return userDelete;
+};
+
+export const existUser = async (id) => {
+	try {
+		const existUser = await prisma.user.findUnique({
+			where: { id, deletedAt: null }
+		});
+
+		if (!existUser) {
+			return false;
+		}
+		return true;
+	} catch (error) {
+		return false;
+	}
 };

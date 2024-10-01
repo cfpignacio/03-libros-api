@@ -70,18 +70,3 @@ export const deleteUserController = async (req, res) => {
 		res.status(204).json({ error: 'Error al borrar el usuario' });
 	}
 };
-
-export const existUser = async (id) => {
-	try {
-		const existUser = await prisma.user.findUnique({
-			where: { id, deletedAt: null }
-		});
-
-		if (!existUser) {
-			return false;
-		}
-		return true;
-	} catch (error) {
-		return false;
-	}
-};
