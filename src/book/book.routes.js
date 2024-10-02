@@ -3,7 +3,8 @@ import {
 	createBookController,
 	getBooksController,
 	updateBookController,
-	deleteBookController
+	deleteBookController,
+	getBookController
 } from './book.controller.js';
 import { isAuthenticated } from '../middlewares/auth-middleware.js';
 
@@ -11,7 +12,7 @@ const router = express.Router();
 
 // PUBLIC
 router.get('/book', getBooksController);
-router.get('/book/:id', getBooksController);
+router.get('/book/:id', getBookController);
 
 // AUTH
 router.post('/book', isAuthenticated, createBookController);

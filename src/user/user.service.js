@@ -35,7 +35,7 @@ export const getUserById = async (id) => {
 export const createUser = async (user) => {
 	const { firstName, lastName, email, password } = user;
 	const passwordBcrypt = await bcrypt.hash(password, 10);
-	const user_Create = await prisma.user.create({
+	const user_Create = await prisma.users.create({
 		data: {
 			firstName: firstName.toLowerCase(),
 			lastName: lastName.toLowerCase(),
@@ -83,4 +83,9 @@ export const existUser = async (id) => {
 	} catch (error) {
 		return false;
 	}
+};
+
+export const getUserByEmail = async (email) => {
+	const user = await prisma.users.findUniqueOrThrow({ where: { email } });
+	return user;
 };

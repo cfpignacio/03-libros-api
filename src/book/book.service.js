@@ -1,17 +1,18 @@
 import prisma from '../../prisma/prismaClient.js';
+import { getUserByEmail } from '../user/user.service.js';
 
 export const createBook = async (book, email) => {
 	const { title, year, publisher, authorId } = book;
-	console.log(`este dato viene desde el jwt -> ${email}`);
+	const user = await getUserByEmail(email);
 	const create_book = await prisma.book.create({
 		data: {
 			title,
 			year,
 			publisher,
-			authorId
+			authorId,
+			userId: user.id
 		}
 	});
-
 	return create_book;
 };
 
@@ -23,7 +24,10 @@ export const getBooks = async () => {
 export const getBook = async (id) => {
 	const book = await prisma.book.findUniqueOrThrow({
 		where: { id },
-		include: { author: { select: { firstname: true, lastname: true } } }
+		include: {
+			author: { select: { firstName: true, lastName: true } },
+			user: { select: { email: true } }
+		}
 	});
 
 	return book;
