@@ -12,7 +12,7 @@ const port = parseInt(process.env.APIBOOK_PORT) || 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.status(200).json('OK');
+	res.status(200).json('api books ver 0.0.1 📖');
 });
 
 app.use('/api', booksRoutes);
