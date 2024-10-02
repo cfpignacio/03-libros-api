@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "node --watch server.js",
+		"prod": "node server.js",
 		"migrate:status": "prisma migrate status",
 		"migrate:dev": "prisma migrate dev"
 	},
