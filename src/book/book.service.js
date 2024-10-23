@@ -13,6 +13,12 @@ export const createBook = async (book, email) => {
 			userId: user.id
 		}
 	});
+
+	console.debug(
+		`${new Date()} - el usuario ${user.email} creo un nuevo libro con id ${
+			create_book.id
+		}`
+	);
 	return create_book;
 };
 

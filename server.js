@@ -5,10 +5,12 @@ import authorsRoutes from './src/author/author.routes.js';
 import usersRoutes from './src/user/user.routes.js';
 import authRoutes from './src/auth/auth.routes.js';
 import { createBook, getBooks } from './src/book/book.service.js';
+import morgan from 'morgan';
 
 const app = express();
 const port = parseInt(process.env.APIBOOK_PORT) || 3000;
 
+app.use(morgan('combined'));
 app.use(express.json());
 
 app.get('/', (req, res) => {

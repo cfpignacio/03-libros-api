@@ -11,16 +11,20 @@ export const getAuthor = async (id) => {
 };
 
 export const createAuthor = async (author) => {
-	const { firstName, lastName, nationality, birthdate } = author;
+	const { firstName, lastName, nationality, birthdate, numero } = author;
+	// const numero = BigInt(author.numero);
+	// console.log(BigInt(author.numero));
 	const author_Create = await prisma.author.create({
 		data: {
 			firstName,
 			lastName,
 			nationality,
-			dateOfBirth: new Date(birthdate)
+			birthdate: new Date(birthdate),
+			numero: BigInt(numero)
 		}
 	});
-	return author_Create;
+	const result = { ...author_Create, numero: numero.toString() };
+	return result;
 };
 
 export const updateAuthor = async (id, author) => {

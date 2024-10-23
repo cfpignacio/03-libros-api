@@ -3,7 +3,8 @@ import {
 	deleteUser,
 	getAllUsers,
 	getUserById,
-	updateUser
+	updateUser,
+	existUser
 } from './user.service.js';
 
 export const getAllUsersController = async (req, res) => {
@@ -35,7 +36,7 @@ export const createUserController = async (req, res) => {
 		const user = await createUser(req.body);
 		res.status(201).json(user);
 	} catch (error) {
-		res.status(500).json({ error: 'Error al crear usuario' });
+		res.status(500).json({ error: error.message });
 	}
 };
 
@@ -53,7 +54,7 @@ export const updateUserController = async (req, res) => {
 
 		res.json(user);
 	} catch (error) {
-		res.status(500).json({ msg: 'Error al actualizar el usuario' });
+		res.status(500).json({ msg: error.message });
 	}
 };
 

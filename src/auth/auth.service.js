@@ -25,6 +25,5 @@ export const authLocal = async (email, password) => {
 		}
 	);
 
-	console.log(process.env.APIBOOK_JWT_PASSWORD);
 	return accessToken;
 };

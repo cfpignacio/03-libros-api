@@ -17,10 +17,10 @@ export const getAuthorsController = async (req, res) => {
 
 export const getAuthorController = async (req, res) => {
 	try {
-		const id = parseInt(req.params.id);
-		const author = await getAuthor(id);
+		const author = await getAuthor(req.params.id);
 		res.json(author);
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ error: 'Error al obtener el autor' });
 	}
 };
@@ -30,6 +30,7 @@ export const createAuthorController = async (req, res) => {
 		const author = await createAuthor(req.body);
 		res.status(201).json(author);
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ error: 'Error al crear autor' });
 	}
 };

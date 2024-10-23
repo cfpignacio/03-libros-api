@@ -1,5 +1,6 @@
 import prisma from '../../prisma/prismaClient.js';
 import bcrypt from 'bcryptjs';
+import { createUserSchema, updateUserSchema } from './user.validator.js';
 
 export const getAllUsers = async () => {
 	const users = await prisma.users.findMany({
@@ -34,6 +35,14 @@ export const getUserById = async (id) => {
 
 export const createUser = async (user) => {
 	const { firstName, lastName, email, password } = user;
+
+	const { error } = createUserSchema.validate(user, { abortEarly: false });
+
+	if (error) {
+		const errors = error.details.map((e) => e.message);
+		throw new Error(errors);
+	}
+
 	const passwordBcrypt = await bcrypt.hash(password, 10);
 	const user_Create = await prisma.users.create({
 		data: {
@@ -49,7 +58,16 @@ export const createUser = async (user) => {
 
 export const updateUser = async (id, user) => {
 	const { firstName, lastName, password } = user;
-	const passwordBcrypt = await bcrypt.hash(password, 10);
+	const { error } = updateUserSchema.validate(user, { abortEarly: false });
+	if (error) {
+		const errors = error.details.map((e) => e.message);
+		throw new Error(errors);
+	}
+
+	if (password) {
+		var passwordBcrypt = await bcrypt.hash(password, 10);
+	}
+
 	const userUpdate = await prisma.users.update({
 		where: { id },
 		data: {
