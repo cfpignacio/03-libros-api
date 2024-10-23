@@ -39,8 +39,7 @@ export const createUser = async (user) => {
 	const { error } = createUserSchema.validate(user, { abortEarly: false });
 
 	if (error) {
-		const errors = error.details.map((e) => e.message);
-		throw new Error(errors);
+		throw new Error(error.message);
 	}
 
 	const passwordBcrypt = await bcrypt.hash(password, 10);
